@@ -1,5 +1,7 @@
 package proyecto1;
 
+import proyecto1.ventanas.InicioVentana;
+
 public class Proyecto1 {
 
     /**
@@ -9,6 +11,9 @@ public class Proyecto1 {
         // TODO code application logic here
         
         System.out.println("Laberinto");
+        InicioVentana v = new InicioVentana();
+        v.setVisible(true);
+        
     }
     
 }
