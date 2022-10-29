@@ -124,8 +124,8 @@ public class GrafoLista {
     **/
     public boolean isIn(int pNodo,int find){
         ENode aux = vertices[pNodo].getNext();
-        while(aux !=null){
-            if(aux.getPosition()==find){
+        while(aux != null){
+            if(aux.getPosition() == find){
                 return true;
             }
             aux = aux.getNext();

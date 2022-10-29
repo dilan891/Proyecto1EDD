@@ -10,23 +10,24 @@ import javax.swing.JPanel;
 public class GrafoVentana extends javax.swing.JFrame {
 
     GrafoLista grafo;
-    
+
     /**
      * Creates new form Grafo
+     *
      * @param grafo grafo que aparecera en la interfaz
      * @param anchoTabla el ancho que tendra la tabla generada
      */
-    public GrafoVentana(GrafoLista grafo,int anchoTabla,int altoTabla) {
+    public GrafoVentana(GrafoLista grafo, int anchoTabla, int altoTabla) {
         this.grafo = grafo;
         initComponents();
         this.setResizable(false);
-        this.setLocationRelativeTo(null); 
+        this.setLocationRelativeTo(null);
         this.setTitle("Laberinto");
-        gererarPanel(anchoTabla,altoTabla);
+        gererarPanel(anchoTabla, altoTabla);
     }
 
-    public void gererarPanel(int anchoTabla,int altoTabla){
-        int alto,ancho,inicialX,inicialY;
+    public void gererarPanel(int anchoTabla, int altoTabla) {
+        int alto, ancho, inicialX, inicialY;
         inicialX = 160;//pocision inicial en x de la celda 1
         inicialY = 20;//pocision inicial en y de la celda 1
         alto = 50;//alto de la celda
@@ -36,26 +37,37 @@ public class GrafoVentana extends javax.swing.JFrame {
         for (int i = 0; i < altoTabla; i++) {
             int auxX = inicialX;
             for (int j = 0; j < anchoTabla; j++) {
-                int top=0,left=0,button=0,right = 0;
+                int top = 0, left = 0, button = 0, right = 0;
                 JPanel nodo1 = new JPanel();
-                System.out.println(grafo.getVertices()[nodo].getDato());
-                if (grafo.isIn(nodo, nodo-1)) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
-                    System.out.print(grafo.getVertices()[nodo].getDato());
-                    System.out.print(" el anterior es: ");                   
-                    System.out.println(grafo.getVertices()[nodo-1].getDato());
-                    System.out.println("si");
+                //System.out.println(grafo.getVertices()[nodo].getDato());
+                if (grafo.isIn(nodo, nodo - 1) || (i + 1) * anchoTabla != nodo) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
+//                    System.out.print(grafo.getVertices()[nodo].getDato());
+//                    System.out.print(" el anterior es: ");                   
+//                    System.out.println(grafo.getVertices()[nodo-1].getDato());
+//                    System.out.println("si");
+                    System.out.println((i)*anchoTabla);
+                    System.out.println("se ejecuta nodo: " + nodo);
                     left = 1;
                 }
-                nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, left, 1, 1, new java.awt.Color(51, 51, 51)));
+                if (grafo.isIn(nodo, nodo + 1) || (i + 1) * anchoTabla != nodo) {
+                    right = 1;
+                }
+                if (grafo.isIn(nodo, nodo - anchoTabla)|| i == 0) {
+                    top = 1;
+                }
+                if (grafo.isIn(nodo, nodo + altoTabla)|| i == altoTabla-1){
+                    button = 1;
+                }
+                nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(51, 51, 51)));
                 jPanel1.add(nodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(auxX, inicialY, ancho, alto));
                 auxX = auxX + ancho;
                 nodo++;
             }
             inicialY = inicialY + alto;
-        }       
+        }
         pack();
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
