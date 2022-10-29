@@ -7,11 +7,19 @@ package grafos.nodos;
 public class ENode {
 
     int position; //la poscion del VNodo orginal al que esta asociado
+    boolean unido;
+    int peso;
     ENode next;
 
+    /**
+    *  @param unido indica si ya esta unido al arbol
+    * @param peso indica el peso de la arista
+    **/
     public ENode() {
         this.next = null;
+        this.peso = 0;
         this.position = -1;
+        this.unido = false;
     }
 
     public int getPosition() {
@@ -30,6 +38,12 @@ public class ENode {
         this.next = next;
     }
 
-    
+    public int getPeso() {
+        return peso;
+    }
+
+    public void setPeso(int peso) {
+        this.peso = peso;
+    }
     
 }
