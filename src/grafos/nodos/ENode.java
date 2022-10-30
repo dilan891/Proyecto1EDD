@@ -7,7 +7,7 @@ package grafos.nodos;
 public class ENode {
 
     int position; //la poscion del VNodo orginal al que esta asociado
-    int peso;
+    float peso;
     ENode next;
 
     /**
@@ -36,11 +36,11 @@ public class ENode {
         this.next = next;
     }
 
-    public int getPeso() {
+    public float getPeso() {
         return peso;
     }
 
-    public void setPeso(int peso) {
+    public void setPeso(float peso) {
         this.peso = peso;
     }
     

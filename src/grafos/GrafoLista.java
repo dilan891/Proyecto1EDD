@@ -44,9 +44,9 @@ public final class GrafoLista {
     public void generarTabla(int ancho,int alto){
         int fila = 1;//fila que va por el recorrido
         int countLimites = 0;
-        int numero = 0;
+        float numero = 0;
         for (int i = 0 ; i < vertices.length; i++) {
-            numero = (int)(Math.random()*18+0);
+            numero = (float)(Math.random()*18+0);
             System.out.println(numero);
             if (i == 0) {
                 unir(0, 1,numero);
@@ -101,7 +101,7 @@ public final class GrafoLista {
      * @param nodoUnido es la poscion del nodo que se va unir
      * @param peso el peso que tendra la arista de los dos nodos
     **/
-    public void unir(int nodo,int nodoUnido,int peso){
+    public void unir(int nodo,int nodoUnido,float peso){
         ENode nodoU = new ENode();
         nodoU.setPosition(nodoUnido);
         nodoU.setPeso(peso);
@@ -118,6 +118,18 @@ public final class GrafoLista {
             }
         } 
         //unir(nodoUnido,nodo); implementar para que quede guardado en los dos
+    }
+    
+    /**
+     * @return retorna la posicion de un limite random
+     **/
+    public int getRadomLimit(){
+        int select = (int)(Math.random()*(1+vertices.length))-1;
+        while(!isInLimit(select)){
+            select = (int)(Math.random()*(1+vertices.length))-1;
+        }
+        System.out.println(select);
+        return select;
     }
     
     public void mostrarLog(){

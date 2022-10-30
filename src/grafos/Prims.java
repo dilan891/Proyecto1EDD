@@ -18,9 +18,11 @@ public class Prims {
     public Prims(GrafoLista grafo) {
         this.grafoS = grafo;
         this.grafo = null;
+        this.ultimo = -1;
     }
 
     public void convertPrimd() {
+        Arbol arbol = new Arbol();
         int select = 0;
         boolean limite = false;
         while (!limite) {
@@ -36,7 +38,7 @@ public class Prims {
         this.grafo = new GrafoLista(grafoS.getVertices().length);
         Lista recorrdido = new Lista();
         while (true) { //cambiar
-            int auxMenor = 9999;
+            float auxMenor = 9999;
             int positionMenor = 0;       
             boolean haySiguiente = false;//indica si todavia hay nodos siguientes no asigandos
             ENode aux = auxRecorrido.getNext();
@@ -52,7 +54,7 @@ public class Prims {
                 aux = aux.getNext();
             }
             if (haySiguiente == false && auxRecorrido.equals(first)) {
-                System.out.println("no mas datos");
+                //System.out.println("no mas datos");
                 try{
                     first = grafoS.getVertices()[recorrdido.getFirst().getSiguiente().getElemento()]; //first sera igual al segundo elemento del recorrido
                 }catch(NullPointerException e){
@@ -63,22 +65,27 @@ public class Prims {
                 recorrdido.removed(0);
             } else if (haySiguiente == false) {
                 //System.out.println("El nodo " + auxRecorrido.getDato() + " se une con ninguno");
-                if(grafo.isInLimit(ultimo)){
-                    ultimo = auxRecorrido.getDato();
-                }
                 auxRecorrido = first;
             } else { //aqui se crea el nuevo grafo
                 //System.out.println("El nodo " + auxRecorrido.getDato() + " se une con: " + positionMenor);
                 grafo.unir(auxRecorrido.getDato(), positionMenor, 0);
                 grafo.unir(positionMenor, auxRecorrido.getDato(), 0);
+                arbol.appendArbol(auxRecorrido.getDato(), positionMenor);
                 auxRecorrido = grafoS.getVertices()[positionMenor];
                 recorrdido.append(positionMenor);
             }
             auxRecorrido.setAsignado(true);
             count++;
         }
+        NodoArbol3 raiz = arbol.getRaiz();
+        while(ultimo == -1||ultimo == posicionEntrada){    
+            ultimo = grafoS.getRadomLimit();
+            arbol.setUltimo(raiz, ultimo);
+        }
         //grafo.mostrarLog();
-
+        //System.out.println(arbol.DatoA());
+        arbol.recorridoSalida(raiz); //genera la lista de recorrido hasta la salida del laberinto
+        //arbol.getCaminoSalida().mostrar();
     }
 
     public int getPosicionEntrada() {
