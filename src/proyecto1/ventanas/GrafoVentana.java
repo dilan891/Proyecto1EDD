@@ -19,7 +19,7 @@ public class GrafoVentana extends javax.swing.JFrame {
      * @param grafo grafo que aparecera en la interfaz
      * @param anchoTabla el ancho que tendra la tabla generada
      */
-    public GrafoVentana(GrafoLista grafos, int anchoTabla, int altoTabla,InicioVentana ventanAnterior) {
+    public GrafoVentana(GrafoLista grafos, int anchoTabla, int altoTabla, InicioVentana ventanAnterior) {
         this.grafo = grafos;
         this.ventanaAnterior = ventanAnterior;
         initComponents();
@@ -46,18 +46,23 @@ public class GrafoVentana extends javax.swing.JFrame {
                 if (grafo.isIn(nodo, nodo - 1)) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
                     left = 0;
                 }
-                if (grafo.isIn(nodo, nodo + 1) ) {
-                    System.out.println("");
+                if (grafo.isIn(nodo, nodo + 1)) {
                     right = 0;
                 }
                 if (grafo.isIn(nodo, nodo - anchoTabla)) {
                     top = 0;
                 }
-                if (grafo.isIn(nodo, nodo + anchoTabla) ){                
+                if (grafo.isIn(nodo, nodo + anchoTabla)) {
                     button = 0;
                 }
-                nodo1.setPreferredSize(new Dimension(1200,1500));
-                nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(51, 51, 51)));
+                nodo1.setPreferredSize(new Dimension(1500, 1500));
+                if (grafo.getFirst() == nodo) {
+                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(52, 64, 235)));
+                }else if(grafo.getLast() == nodo){
+                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(255, 0, 0)));
+                } else {
+                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(51, 51, 51)));
+                }
                 jPanel1.add(nodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(auxX, inicialY, ancho, alto));
                 auxX = auxX + ancho;
                 nodo++;

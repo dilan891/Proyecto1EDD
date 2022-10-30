@@ -11,13 +11,16 @@ public final class GrafoLista {
     private VNode[] vertices;
     private int nNodos; //numero de nodos que tendra el grafo
     private Integer[] limites = new Integer[150];
-
+    private int first; //primer nodo del grafo, en caso de que se quiera
+    private int last;
+    
     /**
      * @param nNodos numero de nodos que tendra el grafo
     **/
     public GrafoLista(int nNodos) {
         this.nNodos = nNodos;
         this.vertices = null;
+        this.first = -1;
         createLista();
     }
     
@@ -41,9 +44,9 @@ public final class GrafoLista {
     public void generarTabla(int ancho,int alto){
         int fila = 1;//fila que va por el recorrido
         int countLimites = 0;
-        int numero = 0;
+        float numero = 0;
         for (int i = 0 ; i < vertices.length; i++) {
-            numero = (int)(Math.random()*18+0);
+            numero = (float)(Math.random()*18+0);
             System.out.println(numero);
             if (i == 0) {
                 unir(0, 1,numero);
@@ -98,7 +101,7 @@ public final class GrafoLista {
      * @param nodoUnido es la poscion del nodo que se va unir
      * @param peso el peso que tendra la arista de los dos nodos
     **/
-    public void unir(int nodo,int nodoUnido,int peso){
+    public void unir(int nodo,int nodoUnido,float peso){
         ENode nodoU = new ENode();
         nodoU.setPosition(nodoUnido);
         nodoU.setPeso(peso);
@@ -115,6 +118,18 @@ public final class GrafoLista {
             }
         } 
         //unir(nodoUnido,nodo); implementar para que quede guardado en los dos
+    }
+    
+    /**
+     * @return retorna la posicion de un limite random
+     **/
+    public int getRadomLimit(){
+        int select = (int)(Math.random()*(1+vertices.length))-1;
+        while(!isInLimit(select)){
+            select = (int)(Math.random()*(1+vertices.length))-1;
+        }
+        System.out.println(select);
+        return select;
     }
     
     public void mostrarLog(){
@@ -150,12 +165,12 @@ public final class GrafoLista {
         return false;
     }
     
-    public boolean isInArray(int select){
-        for (int i = 0; i < limites.length; i++) {
-            if (limites[i] == null) {
-                return false;            
-            }
-            else if (limites[i] == select){
+    //verifica si la poscion dada es un limite del grafo
+    public boolean isInLimit(int select){
+        for (Integer limite : limites) {
+            if (limite == null) {
+                return false;
+            } else if (limite == select) {
                 return true;
             }
         }
@@ -166,17 +181,35 @@ public final class GrafoLista {
         Prims arbol = new Prims(this);
         arbol.convertPrimd();
         GrafoLista arbolGrado = arbol.getArbol();
+        arbolGrado.setFirst(arbol.getPosicionEntrada());
+        arbolGrado.setLast(arbol.getUltimo());
         return arbolGrado;
     }
 
     public VNode[] getVertices() {
         return vertices;
     }
+
+    public void setFirst(int first) {
+        this.first = first;
+    }
+
+    public int getLast() {
+        return last;
+    }
+
+    public void setLast(int last) {
+        this.last = last;
+    }
     
     public int getFilas() {
         return nNodos;
     }
 
+    public int getFirst() {
+        return first;
+    }
+    
     public void setFilas(int nNodos) {
         this.nNodos = nNodos;
     }  
