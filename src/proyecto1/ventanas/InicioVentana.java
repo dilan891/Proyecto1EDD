@@ -4,7 +4,7 @@ import grafos.GrafoLista;
 
 /**
  *
- * @author dilan
+ * @author dilan/yoita5
  */
 public class InicioVentana extends javax.swing.JFrame {
 
@@ -27,6 +27,13 @@ public class InicioVentana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
+        jOptionPane1 = new javax.swing.JOptionPane();
+        textArea1 = new java.awt.TextArea();
+        jColorChooser1 = new javax.swing.JColorChooser();
+        label2 = new java.awt.Label();
+        errorMensaje = new javax.swing.JLabel();
+        textField1 = new java.awt.TextField();
         jPanel1 = new javax.swing.JPanel();
         nColumnas = new javax.swing.JTextField();
         nFilas = new javax.swing.JTextField();
@@ -34,19 +41,33 @@ public class InicioVentana extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         botonGenerar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        errorMensaje = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+
+        label1.setText("label1");
+
+        label2.setText("label2");
+
+        errorMensaje.setForeground(new java.awt.Color(255, 0, 0));
+
+        textField1.setText("textField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(166, 216, 232));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 255, 102)));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(nColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 90, -1));
-        jPanel1.add(nFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 90, -1));
+        jPanel1.add(nColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 90, -1));
+        jPanel1.add(nFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 90, -1));
 
-        jLabel1.setText("Numero de columnas: ");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 170, -1));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel1.setText("Ancho que tendra el laboratorio: ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, -1));
 
-        jLabel2.setText("Numero de filas:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 110, -1));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel2.setText("Largo que tendra el laboratorio:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 190, -1));
 
         botonGenerar.setText("Generar");
         botonGenerar.addActionListener(new java.awt.event.ActionListener() {
@@ -54,13 +75,15 @@ public class InicioVentana extends javax.swing.JFrame {
                 botonGenerarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, -1, -1));
+        jPanel1.add(botonGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
 
-        jLabel3.setText("Generar Laberinto");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, -1, -1));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setText("Por favor introduce:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 140, 20));
 
-        errorMensaje.setForeground(new java.awt.Color(255, 0, 0));
-        jPanel1.add(errorMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 270, 10));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Generar Laberinto");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 110, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,11 +136,18 @@ public class InicioVentana extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonGenerar;
     private javax.swing.JLabel errorMensaje;
+    private javax.swing.JColorChooser jColorChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
     private javax.swing.JTextField nColumnas;
     private javax.swing.JTextField nFilas;
+    private java.awt.TextArea textArea1;
+    private java.awt.TextField textField1;
     // End of variables declaration//GEN-END:variables
 }

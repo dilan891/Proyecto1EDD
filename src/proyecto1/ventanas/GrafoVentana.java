@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author dilan
+ * @author dilan/yoita5
  */
 public class GrafoVentana extends javax.swing.JFrame {
 
