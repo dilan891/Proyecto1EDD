@@ -32,7 +32,7 @@ public class Prims {
         int count = 1;
         this.grafo = new GrafoLista(grafoS.getVertices().length);
         Lista recorrdido = new Lista();
-        while (count < 200) { //cambiar
+        while (true) { //cambiar
             int auxMenor = 9999;
             int positionMenor = 0;       
             boolean haySiguiente = false;//indica si todavia hay nodos siguientes no asigandos

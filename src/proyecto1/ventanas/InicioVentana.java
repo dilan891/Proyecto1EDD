@@ -94,7 +94,7 @@ public class InicioVentana extends javax.swing.JFrame {
                 grafo2.mostrarLog();
 
                 GrafoLista arbolGrafo = grafo2.prims();
-
+                this.setVisible(false);
                 GrafoVentana ventana = new GrafoVentana(arbolGrafo, columnas, filas, this);//interfaz de laberinto
                 ventana.setVisible(true);
      

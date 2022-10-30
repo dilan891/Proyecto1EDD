@@ -1,6 +1,7 @@
 package proyecto1.ventanas;
 
 import grafos.GrafoLista;
+import java.awt.Dimension;
 import javax.swing.JPanel;
 
 /**
@@ -30,10 +31,10 @@ public class GrafoVentana extends javax.swing.JFrame {
 
     public void gererarPanel(int anchoTabla, int altoTabla) {
         int alto, ancho, inicialX, inicialY;
-        inicialX = 160;//pocision inicial en x de la celda 1
-        inicialY = 20;//pocision inicial en y de la celda 1
-        alto = 50;//alto de la celda
-        ancho = 50;//ancho de la celda
+        inicialX = 0;//pocision inicial en x de la celda 1
+        inicialY = 0;//pocision inicial en y de la celda 1
+        alto = 40;//alto de la celda
+        ancho = 40;//ancho de la celda
         int nodo = 0;//contador del nodo al que va
         //System.out.println("\nnodos: ");
         for (int i = 0; i < altoTabla; i++) {
@@ -52,9 +53,10 @@ public class GrafoVentana extends javax.swing.JFrame {
                 if (grafo.isIn(nodo, nodo - anchoTabla)) {
                     top = 0;
                 }
-                if (grafo.isIn(nodo, nodo + altoTabla) ){
+                if (grafo.isIn(nodo, nodo + anchoTabla) ){                
                     button = 0;
                 }
+                nodo1.setPreferredSize(new Dimension(1200,1500));
                 nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(51, 51, 51)));
                 jPanel1.add(nodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(auxX, inicialY, ancho, alto));
                 auxX = auxX + ancho;
@@ -74,12 +76,14 @@ public class GrafoVentana extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jScrollPane1.setViewportView(jPanel1);
 
         volver.setText("Volver a generar");
         volver.addActionListener(new java.awt.event.ActionListener() {
@@ -87,17 +91,24 @@ public class GrafoVentana extends javax.swing.JFrame {
                 volverActionPerformed(evt);
             }
         });
-        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
+            .addComponent(jScrollPane1)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(383, Short.MAX_VALUE)
+                .addComponent(volver)
+                .addGap(373, 373, 373))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(volver)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
 
         pack();
@@ -112,6 +123,7 @@ public class GrafoVentana extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
