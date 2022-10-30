@@ -40,7 +40,7 @@ public class GrafoVentana extends javax.swing.JFrame {
         for (int i = 0; i < altoTabla; i++) {
             int auxX = inicialX;
             for (int j = 0; j < anchoTabla; j++) {
-                int top = 1, left = 1, button = 1, right = 1;
+                int top = 2, left = 2, button = 2, right = 2;
                 JPanel nodo1 = new JPanel();
                 //System.out.println(grafo.getVertices()[nodo].getDato());
                 if (grafo.isIn(nodo, nodo - 1)) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
@@ -57,7 +57,7 @@ public class GrafoVentana extends javax.swing.JFrame {
                 }
                 nodo1.setPreferredSize(new Dimension(1500, 1500));
                 if (grafo.getFirst() == nodo) {
-                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(52, 64, 235)));
+                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(0, 143, 57)));
                 }else if(grafo.getLast() == nodo){
                     nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(255, 0, 0)));
                 } else {
