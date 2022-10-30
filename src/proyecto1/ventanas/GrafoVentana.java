@@ -47,7 +47,6 @@ public class GrafoVentana extends javax.swing.JFrame {
                     left = 0;
                 }
                 if (grafo.isIn(nodo, nodo + 1)) {
-                    System.out.println("");
                     right = 0;
                 }
                 if (grafo.isIn(nodo, nodo - anchoTabla)) {
@@ -58,7 +57,8 @@ public class GrafoVentana extends javax.swing.JFrame {
                 }
                 nodo1.setPreferredSize(new Dimension(1500, 1500));
                 if (grafo.getFirst() == nodo) {
-                    System.out.println("a");
+                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(52, 64, 235)));
+                }else if(grafo.getLast() == nodo){
                     nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(255, 0, 0)));
                 } else {
                     nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(51, 51, 51)));

@@ -12,6 +12,7 @@ public final class GrafoLista {
     private int nNodos; //numero de nodos que tendra el grafo
     private Integer[] limites = new Integer[150];
     private int first; //primer nodo del grafo, en caso de que se quiera
+    private int last;
     
     /**
      * @param nNodos numero de nodos que tendra el grafo
@@ -152,7 +153,8 @@ public final class GrafoLista {
         return false;
     }
     
-    public boolean isInArray(int select){
+    //verifica si la poscion dada es un limite del grafo
+    public boolean isInLimit(int select){
         for (Integer limite : limites) {
             if (limite == null) {
                 return false;
@@ -168,6 +170,7 @@ public final class GrafoLista {
         arbol.convertPrimd();
         GrafoLista arbolGrado = arbol.getArbol();
         arbolGrado.setFirst(arbol.getPosicionEntrada());
+        arbolGrado.setLast(arbol.getUltimo());
         return arbolGrado;
     }
 
@@ -178,7 +181,14 @@ public final class GrafoLista {
     public void setFirst(int first) {
         this.first = first;
     }
-    
+
+    public int getLast() {
+        return last;
+    }
+
+    public void setLast(int last) {
+        this.last = last;
+    }
     
     public int getFilas() {
         return nNodos;

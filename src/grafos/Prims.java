@@ -25,7 +25,7 @@ public class Prims {
         boolean limite = false;
         while (!limite) {
             select = (int) (Math.random() * grafoS.getVertices().length + 1) - 1;
-            limite = grafoS.isInArray(select);
+            limite = grafoS.isInLimit(select);
         }
         VNode first = grafoS.getVertices()[select];
         first.setAsignado(true);
@@ -63,7 +63,9 @@ public class Prims {
                 recorrdido.removed(0);
             } else if (haySiguiente == false) {
                 //System.out.println("El nodo " + auxRecorrido.getDato() + " se une con ninguno");
-                ultimo = auxRecorrido.getDato();
+                if(grafo.isInLimit(ultimo)){
+                    ultimo = auxRecorrido.getDato();
+                }
                 auxRecorrido = first;
             } else { //aqui se crea el nuevo grafo
                 //System.out.println("El nodo " + auxRecorrido.getDato() + " se une con: " + positionMenor);
@@ -85,6 +87,10 @@ public class Prims {
 
     public GrafoLista getArbol() {
         return grafo;
+    }
+
+    public int getUltimo() {
+        return ultimo;
     }
 
 }
