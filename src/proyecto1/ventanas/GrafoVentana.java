@@ -9,7 +9,8 @@ import javax.swing.JPanel;
  */
 public class GrafoVentana extends javax.swing.JFrame {
 
-    GrafoLista grafo;
+    private InicioVentana ventanaAnterior;
+    private GrafoLista grafo;
 
     /**
      * Creates new form Grafo
@@ -17,8 +18,9 @@ public class GrafoVentana extends javax.swing.JFrame {
      * @param grafo grafo que aparecera en la interfaz
      * @param anchoTabla el ancho que tendra la tabla generada
      */
-    public GrafoVentana(GrafoLista grafos, int anchoTabla, int altoTabla) {
+    public GrafoVentana(GrafoLista grafos, int anchoTabla, int altoTabla,InicioVentana ventanAnterior) {
         this.grafo = grafos;
+        this.ventanaAnterior = ventanAnterior;
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -73,10 +75,19 @@ public class GrafoVentana extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        volver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        volver.setText("Volver a generar");
+        volver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                volverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(volver, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,8 +103,15 @@ public class GrafoVentana extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void volverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_volverActionPerformed
+        // TODO add your handling code here:
+        ventanaAnterior.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_volverActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
 }
