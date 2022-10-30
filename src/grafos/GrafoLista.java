@@ -160,10 +160,11 @@ public final class GrafoLista {
         return false;
     }
     
-    public void prims(int ancho,int alto){
+    public GrafoLista prims(){
         Prims arbol = new Prims(this);
         arbol.convertPrimd();
         GrafoLista arbolGrado = arbol.getArbol();
+        return arbolGrado;
     }
 
     public VNode[] getVertices() {

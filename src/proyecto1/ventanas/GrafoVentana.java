@@ -17,8 +17,8 @@ public class GrafoVentana extends javax.swing.JFrame {
      * @param grafo grafo que aparecera en la interfaz
      * @param anchoTabla el ancho que tendra la tabla generada
      */
-    public GrafoVentana(GrafoLista grafo, int anchoTabla, int altoTabla) {
-        this.grafo = grafo;
+    public GrafoVentana(GrafoLista grafos, int anchoTabla, int altoTabla) {
+        this.grafo = grafos;
         initComponents();
         this.setResizable(false);
         this.setLocationRelativeTo(null);
@@ -33,30 +33,25 @@ public class GrafoVentana extends javax.swing.JFrame {
         alto = 50;//alto de la celda
         ancho = 50;//ancho de la celda
         int nodo = 0;//contador del nodo al que va
-        System.out.println("\nnodos: ");
+        //System.out.println("\nnodos: ");
         for (int i = 0; i < altoTabla; i++) {
             int auxX = inicialX;
             for (int j = 0; j < anchoTabla; j++) {
-                int top = 0, left = 0, button = 0, right = 0;
+                int top = 1, left = 1, button = 1, right = 1;
                 JPanel nodo1 = new JPanel();
                 //System.out.println(grafo.getVertices()[nodo].getDato());
-                if (grafo.isIn(nodo, nodo - 1) || (i + 1) * anchoTabla != nodo) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
-//                    System.out.print(grafo.getVertices()[nodo].getDato());
-//                    System.out.print(" el anterior es: ");                   
-//                    System.out.println(grafo.getVertices()[nodo-1].getDato());
-//                    System.out.println("si");
-                    System.out.println((i)*anchoTabla);
-                    System.out.println("se ejecuta nodo: " + nodo);
-                    left = 1;
+                if (grafo.isIn(nodo, nodo - 1)) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
+                    left = 0;
                 }
-                if (grafo.isIn(nodo, nodo + 1) || (i + 1) * anchoTabla != nodo) {
-                    right = 1;
+                if (grafo.isIn(nodo, nodo + 1) ) {
+                    System.out.println("");
+                    right = 0;
                 }
-                if (grafo.isIn(nodo, nodo - anchoTabla)|| i == 0) {
-                    top = 1;
+                if (grafo.isIn(nodo, nodo - anchoTabla)) {
+                    top = 0;
                 }
-                if (grafo.isIn(nodo, nodo + altoTabla)|| i == altoTabla-1){
-                    button = 1;
+                if (grafo.isIn(nodo, nodo + altoTabla) ){
+                    button = 0;
                 }
                 nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(51, 51, 51)));
                 jPanel1.add(nodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(auxX, inicialY, ancho, alto));

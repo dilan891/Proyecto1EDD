@@ -5,12 +5,21 @@ package grafos.nodos;
  * @author dilan
  */
 public class VNode {
+    boolean asignado = false;
     int dato;
     ENode nextFirst;
 
     public VNode() {
         this.dato = 0;
         this.nextFirst = null;
+    }
+
+    public boolean isAsignado() {
+        return asignado;
+    }
+    
+    public void setAsignado(boolean asignado) {
+        this.asignado = asignado;
     }
 
     public int getDato() {
