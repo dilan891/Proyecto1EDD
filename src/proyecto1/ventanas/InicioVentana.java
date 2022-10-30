@@ -1,5 +1,7 @@
 package proyecto1.ventanas;
 
+import grafos.GrafoLista;
+
 /**
  *
  * @author dilan
@@ -78,11 +80,27 @@ public class InicioVentana extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             int columnas = Integer.parseInt(nColumnas.getText());
-            int filas = Integer.parseInt(nFilas.getText()); 
+            int filas = Integer.parseInt(nFilas.getText());
             if (columnas <= 0 || filas <= 0) {
                 System.out.println("numero de columnas o filas invalida");
                 errorMensaje.setText("Numero de columnas o filas invalida");
+            }else{
+                nColumnas.setText("");
+                nFilas.setText("");
+                int nNodos = filas * columnas; //numero de nodos que tendra el grafo a generar
+
+                GrafoLista grafo2 = new GrafoLista(nNodos);
+                grafo2.generarTabla(columnas, filas);
+                grafo2.mostrarLog();
+
+                GrafoLista arbolGrafo = grafo2.prims();
+
+                GrafoVentana ventana = new GrafoVentana(arbolGrafo, columnas, filas, this);//interfaz de laberinto
+                ventana.setVisible(true);
+     
             }
+       
+            
         } catch (NumberFormatException e) {
             System.out.println(e);
             errorMensaje.setText("Error: no se pueden introducir letras");
