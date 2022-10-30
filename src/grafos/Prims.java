@@ -78,14 +78,14 @@ public class Prims {
             count++;
         }
         NodoArbol3 raiz = arbol.getRaiz();
-        while(ultimo == -1||ultimo == posicionEntrada){    
+        while(ultimo == -1||ultimo == posicionEntrada|| !arbol.isFinal(ultimo)){    
             ultimo = grafoS.getRadomLimit();
             arbol.setUltimo(raiz, ultimo);
         }
         //grafo.mostrarLog();
         //System.out.println(arbol.DatoA());
         arbol.recorridoSalida(raiz); //genera la lista de recorrido hasta la salida del laberinto
-        //arbol.getCaminoSalida().mostrar();
+        arbol.getCaminoSalida().mostrar();
     }
 
     public int getPosicionEntrada() {

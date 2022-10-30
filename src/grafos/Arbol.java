@@ -9,8 +9,9 @@ import lista.Lista;
 public class Arbol {
 
     private NodoArbol3 raiz;
-    private Lista caminos;
-    private Lista caminoSalida;
+    private NodoArbol3 busqueda;
+    private final Lista caminos;
+    private final Lista caminoSalida;
 
     public Arbol() {
         this.raiz = null;
@@ -60,7 +61,6 @@ public class Arbol {
 
     /**
      * añade un nodo en la posicion del nodo dado
-    *
      */
     public void appendArbol(int posicion, int dato) {
         if (raiz == null) {
@@ -103,7 +103,31 @@ public class Arbol {
             }
         }
     }
-
+    
+    public void recorrido(NodoArbol3 nodo,int position){
+        if(nodo != null){
+            if (nodo.getDato() == position) {
+                busqueda = nodo;
+            }else{
+                recorrido(nodo.getNodoA(), position);
+                recorrido(nodo.getNodoB(), position);
+                recorrido(nodo.getNodoC(), position);
+            }
+        }
+    }
+    
+    /**
+     * verifica si las hojas hijas son todas null
+     * @return retorna false si todavia tiene hijos y true si ya no tiene
+    **/
+    public boolean isFinal(int position){
+        recorrido(raiz, position);
+        if (busqueda.getNodoA() == null && busqueda.getNodoB() == null && busqueda.getNodoC() == null) {
+            return true;
+        }
+        return false;
+    }
+    
     //getters de prueba --borrar
     public int DatoA() {
         return raiz.getNodoA().getDato();
