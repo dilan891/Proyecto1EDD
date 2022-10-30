@@ -10,8 +10,10 @@ import lista.Lista;
  */
 public class Prims {
 
-    GrafoLista grafoS; // grafo sin convertir a arbol
-    GrafoLista grafo;
+    private GrafoLista grafoS; // grafo sin convertir a arbol
+    private GrafoLista grafo;
+    private int posicionEntrada;
+    private int ultimo;//salida del laberinto
 
     public Prims(GrafoLista grafo) {
         this.grafoS = grafo;
@@ -27,6 +29,7 @@ public class Prims {
         }
         VNode first = grafoS.getVertices()[select];
         first.setAsignado(true);
+        posicionEntrada = select;       
         //agarra la arista de menor peso
         VNode auxRecorrido = first;
         int count = 1;
@@ -59,10 +62,11 @@ public class Prims {
                 //auxRecorrido = first;
                 recorrdido.removed(0);
             } else if (haySiguiente == false) {
-                System.out.println("El nodo " + auxRecorrido.getDato() + " se une con ninguno");
+                //System.out.println("El nodo " + auxRecorrido.getDato() + " se une con ninguno");
+                ultimo = auxRecorrido.getDato();
                 auxRecorrido = first;
             } else { //aqui se crea el nuevo grafo
-                System.out.println("El nodo " + auxRecorrido.getDato() + " se une con: " + positionMenor);
+                //System.out.println("El nodo " + auxRecorrido.getDato() + " se une con: " + positionMenor);
                 grafo.unir(auxRecorrido.getDato(), positionMenor, 0);
                 grafo.unir(positionMenor, auxRecorrido.getDato(), 0);
                 auxRecorrido = grafoS.getVertices()[positionMenor];
@@ -73,6 +77,10 @@ public class Prims {
         }
         //grafo.mostrarLog();
 
+    }
+
+    public int getPosicionEntrada() {
+        return posicionEntrada;
     }
 
     public GrafoLista getArbol() {

@@ -11,13 +11,15 @@ public final class GrafoLista {
     private VNode[] vertices;
     private int nNodos; //numero de nodos que tendra el grafo
     private Integer[] limites = new Integer[150];
-
+    private int first; //primer nodo del grafo, en caso de que se quiera
+    
     /**
      * @param nNodos numero de nodos que tendra el grafo
     **/
     public GrafoLista(int nNodos) {
         this.nNodos = nNodos;
         this.vertices = null;
+        this.first = -1;
         createLista();
     }
     
@@ -151,11 +153,10 @@ public final class GrafoLista {
     }
     
     public boolean isInArray(int select){
-        for (int i = 0; i < limites.length; i++) {
-            if (limites[i] == null) {
-                return false;            
-            }
-            else if (limites[i] == select){
+        for (Integer limite : limites) {
+            if (limite == null) {
+                return false;
+            } else if (limite == select) {
                 return true;
             }
         }
@@ -166,17 +167,27 @@ public final class GrafoLista {
         Prims arbol = new Prims(this);
         arbol.convertPrimd();
         GrafoLista arbolGrado = arbol.getArbol();
+        arbolGrado.setFirst(arbol.getPosicionEntrada());
         return arbolGrado;
     }
 
     public VNode[] getVertices() {
         return vertices;
     }
+
+    public void setFirst(int first) {
+        this.first = first;
+    }
+    
     
     public int getFilas() {
         return nNodos;
     }
 
+    public int getFirst() {
+        return first;
+    }
+    
     public void setFilas(int nNodos) {
         this.nNodos = nNodos;
     }  
