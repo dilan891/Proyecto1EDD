@@ -10,7 +10,7 @@ import grafos.nodos.VNode;
 public final class GrafoLista {
     private VNode[] vertices;
     private int nNodos; //numero de nodos que tendra el grafo
-    private Integer[] limites = new Integer[100];
+    private Integer[] limites = new Integer[150];
 
     /**
      * @param nNodos numero de nodos que tendra el grafo
@@ -41,8 +41,10 @@ public final class GrafoLista {
     public void generarTabla(int ancho,int alto){
         int fila = 1;//fila que va por el recorrido
         int countLimites = 0;
+        int numero = 0;
         for (int i = 0 ; i < vertices.length; i++) {
-            int numero = (int)(Math.random()*15+0);
+            numero = (int)(Math.random()*18+0);
+            System.out.println(numero);
             if (i == 0) {
                 unir(0, 1,numero);
                 unir(1, 0,numero);
