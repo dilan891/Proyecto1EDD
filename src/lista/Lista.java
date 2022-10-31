@@ -74,6 +74,18 @@ public class Lista{
 
     }
 
+    public void generarCopia(Lista lista){
+        Lista copia = new Lista();
+        Nodo aux = lista.getFirst();
+        while(aux != null){
+            copia.append(aux.getElemento());
+            aux = aux.getSiguiente();
+        }
+        first = copia.getFirst();
+        last = copia.getLast();
+        size = copia.length();
+    }
+    
     public void append(int dato) {
         Nodo nuevo = new Nodo(dato);
         if (this.isEmpty()) {
