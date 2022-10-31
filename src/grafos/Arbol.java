@@ -9,8 +9,9 @@ import lista.Lista;
 public class Arbol {
 
     private NodoArbol3 raiz;
-    private Lista caminos;
-    private Lista caminoSalida;
+    private NodoArbol3 busqueda;
+    private final Lista caminos;
+    private final Lista caminoSalida;
 
     public Arbol() {
         this.raiz = null;
@@ -19,6 +20,7 @@ public class Arbol {
     }
 
     public Lista getCaminoSalida() {
+        System.out.println("el camino: s" + caminoSalida);
         return caminoSalida;
     }
 
@@ -30,19 +32,31 @@ public class Arbol {
         this.raiz = raiz;
     }
 
-    public void setUltimo(NodoArbol3 nodo,int posicion){
+    public void setUltimo(NodoArbol3 nodo, int posicion) {
         if (nodo != null) {
             if (nodo.getDato() == posicion) {
+                //System.out.println( "en la posicion " + posicion + " da true el nodo: " + nodo.getDato()); odio ver donde esta el error
                 nodo.setIsSalida(true);
             }
-            else{
-                setUltimo(nodo.getNodoA(), posicion);
-                setUltimo(nodo.getNodoB(), posicion);
-                setUltimo(nodo.getNodoC(), posicion);
-            }
+            setUltimo(nodo.getNodoA(), posicion);
+            setUltimo(nodo.getNodoB(), posicion);
+            setUltimo(nodo.getNodoC(), posicion);
+
         }
     }
-    
+
+    public void mostrar(NodoArbol3 nodo) {
+        if (nodo != null) {
+            if (nodo.isIsSalida()) {
+                System.out.println("true");
+            }
+            mostrar(nodo.getNodoA());
+            mostrar(nodo.getNodoB());
+            mostrar(nodo.getNodoC());
+
+        }
+    }
+
     public void recorrerArbolAgregando(NodoArbol3 nodo, int valorBuscado, int dato) {
         if (nodo != null) {
             //System.out.println("Estas en el nodo: " + nodo.getDato() + " y buscas: " + valorBuscado);
@@ -60,7 +74,6 @@ public class Arbol {
 
     /**
      * añade un nodo en la posicion del nodo dado
-    *
      */
     public void appendArbol(int posicion, int dato) {
         if (raiz == null) {
@@ -89,7 +102,7 @@ public class Arbol {
     /**
      * genera una lista con los nodos que tiene que recorrer hata llegar a la
      * salida
-    *
+     *
      */
     public void recorridoSalida(NodoArbol3 nodo) {
         if (nodo != null) {
@@ -102,6 +115,36 @@ public class Arbol {
                 recorridoSalida(nodo.getNodoC());
             }
         }
+    }
+
+    public void recorrido(NodoArbol3 nodo, int position) {
+        if (nodo != null) {
+            if (nodo.getDato() == position) {
+                busqueda = nodo;
+            } else {
+                recorrido(nodo.getNodoA(), position);
+                recorrido(nodo.getNodoB(), position);
+                recorrido(nodo.getNodoC(), position);
+            }
+        }
+    }
+
+    /**
+     * verifica si las hojas hijas son todas null
+     *
+     * @return retorna false si todavia tiene hijos y true si ya no tiene
+     *
+     */
+    public boolean isFinal(int position) {
+        recorrido(raiz, position);
+        if (busqueda.getNodoA() == null && busqueda.getNodoB() == null && busqueda.getNodoC() == null) {
+            return true;
+        }
+        return false;
+    }
+
+    public Lista getCamino() {
+        return caminoSalida;
     }
 
     //getters de prueba --borrar
