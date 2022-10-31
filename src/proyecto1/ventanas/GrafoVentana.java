@@ -166,7 +166,7 @@ public class GrafoVentana extends javax.swing.JFrame {
         camino.mostrar();
         Nodo aux = camino.getFirst();
         while(aux!=null){
-            celdas[aux.getElemento()].setBackground(Color.red);
+            celdas[aux.getElemento()].setBackground(Color.MAGENTA);
             aux = aux.getSiguiente();
         }
         
