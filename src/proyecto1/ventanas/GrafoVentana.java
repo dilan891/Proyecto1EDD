@@ -1,8 +1,11 @@
 package proyecto1.ventanas;
 
 import grafos.GrafoLista;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
+import lista.Lista;
+import lista.Nodo;
 
 /**
  *
@@ -12,6 +15,7 @@ public class GrafoVentana extends javax.swing.JFrame {
 
     private InicioVentana ventanaAnterior;
     private GrafoLista grafo;
+    private JPanel[] celdas;
 
     /**
      * Creates new form Grafo
@@ -30,6 +34,7 @@ public class GrafoVentana extends javax.swing.JFrame {
     }
 
     public void gererarPanel(int anchoTabla, int altoTabla) {
+        JPanel[] celdasNuevas = new JPanel[grafo.getVertices().length];
         int alto, ancho, inicialX, inicialY;
         inicialX = 0;//pocision inicial en x de la celda 1
         inicialY = 0;//pocision inicial en y de la celda 1
@@ -65,10 +70,12 @@ public class GrafoVentana extends javax.swing.JFrame {
                 }
                 jPanel1.add(nodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(auxX, inicialY, ancho, alto));
                 auxX = auxX + ancho;
+                celdasNuevas[nodo] = nodo1;
                 nodo++;
             }
             inicialY = inicialY + alto;
         }
+        this.celdas = celdasNuevas;
         pack();
     }
 
@@ -154,6 +161,14 @@ public class GrafoVentana extends javax.swing.JFrame {
 
     private void botonSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSolucionActionPerformed
         // TODO add your handling code here:
+        Lista camino = grafo.getCamino();
+        System.out.println("el camino es:");
+        camino.mostrar();
+        Nodo aux = camino.getFirst();
+        while(aux!=null){
+            celdas[aux.getElemento()].setBackground(Color.red);
+            aux = aux.getSiguiente();
+        }
         
     }//GEN-LAST:event_botonSolucionActionPerformed
 

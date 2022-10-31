@@ -2,6 +2,7 @@ package grafos;
 
 import grafos.nodos.ENode;
 import grafos.nodos.VNode;
+import lista.Lista;
 
 /**
  *
@@ -13,6 +14,8 @@ public final class GrafoLista {
     private Integer[] limites = new Integer[150];
     private int first; //primer nodo del grafo, en caso de que se quiera
     private int last;
+    private Lista camino; //un camino de reccorido en el grafo
+    private Prims arbolPrims;
     
     /**
      * @param nNodos numero de nodos que tendra el grafo
@@ -21,6 +24,7 @@ public final class GrafoLista {
         this.nNodos = nNodos;
         this.vertices = null;
         this.first = -1;
+        this.camino = null;
         createLista();
     }
     
@@ -180,16 +184,28 @@ public final class GrafoLista {
     public GrafoLista prims(){
         Prims arbol = new Prims(this);
         arbol.convertPrimd();
-        GrafoLista arbolGrado = arbol.getArbol();
+        arbolPrims = arbol;
+        GrafoLista arbolGrado = arbol.getArbolGrafo();
         arbolGrado.setFirst(arbol.getPosicionEntrada());
         arbolGrado.setLast(arbol.getUltimo());
+        arbolGrado.setCamino(arbol.getCamino());
         return arbolGrado;
     }
 
+    public Lista getCamino(){
+        return camino;
+    }
+    
     public VNode[] getVertices() {
         return vertices;
     }
 
+    public void setCamino(Lista camino) {
+        this.camino = camino;
+    }
+
+    
+    
     public void setFirst(int first) {
         this.first = first;
     }
