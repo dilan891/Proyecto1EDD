@@ -1,8 +1,11 @@
 package proyecto1.ventanas;
 
 import grafos.GrafoLista;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JPanel;
+import lista.Lista;
+import lista.Nodo;
 
 /**
  *
@@ -12,6 +15,7 @@ public class GrafoVentana extends javax.swing.JFrame {
 
     private InicioVentana ventanaAnterior;
     private GrafoLista grafo;
+    private JPanel[] celdas;
 
     /**
      * Creates new form Grafo
@@ -30,6 +34,7 @@ public class GrafoVentana extends javax.swing.JFrame {
     }
 
     public void gererarPanel(int anchoTabla, int altoTabla) {
+        JPanel[] celdasNuevas = new JPanel[grafo.getVertices().length];
         int alto, ancho, inicialX, inicialY;
         inicialX = 0;//pocision inicial en x de la celda 1
         inicialY = 0;//pocision inicial en y de la celda 1
@@ -40,7 +45,7 @@ public class GrafoVentana extends javax.swing.JFrame {
         for (int i = 0; i < altoTabla; i++) {
             int auxX = inicialX;
             for (int j = 0; j < anchoTabla; j++) {
-                int top = 1, left = 1, button = 1, right = 1;
+                int top = 2, left = 2, button = 2, right = 2;
                 JPanel nodo1 = new JPanel();
                 //System.out.println(grafo.getVertices()[nodo].getDato());
                 if (grafo.isIn(nodo, nodo - 1)) { //verifica si el nodo anterior esta en la unido si no es asi borra el borde izquirdo
@@ -57,7 +62,7 @@ public class GrafoVentana extends javax.swing.JFrame {
                 }
                 nodo1.setPreferredSize(new Dimension(1500, 1500));
                 if (grafo.getFirst() == nodo) {
-                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(52, 64, 235)));
+                    nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(0, 143, 57)));
                 }else if(grafo.getLast() == nodo){
                     nodo1.setBorder(javax.swing.BorderFactory.createMatteBorder(top, left, button, right, new java.awt.Color(255, 0, 0)));
                 } else {
@@ -65,10 +70,12 @@ public class GrafoVentana extends javax.swing.JFrame {
                 }
                 jPanel1.add(nodo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(auxX, inicialY, ancho, alto));
                 auxX = auxX + ancho;
+                celdasNuevas[nodo] = nodo1;
                 nodo++;
             }
             inicialY = inicialY + alto;
         }
+        this.celdas = celdasNuevas;
         pack();
     }
 
@@ -83,7 +90,9 @@ public class GrafoVentana extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
         volver = new javax.swing.JButton();
+        botonSolucion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -97,23 +106,48 @@ public class GrafoVentana extends javax.swing.JFrame {
             }
         });
 
+        botonSolucion.setText("Solucion");
+        botonSolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSolucionActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(222, 222, 222)
+                .addComponent(volver)
+                .addGap(112, 112, 112)
+                .addComponent(botonSolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(volver)
+                    .addComponent(botonSolucion))
+                .addGap(33, 33, 33))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(383, Short.MAX_VALUE)
-                .addComponent(volver)
-                .addGap(373, 373, 373))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(volver)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -125,9 +159,24 @@ public class GrafoVentana extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
+    private void botonSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSolucionActionPerformed
+        // TODO add your handling code here:
+        Lista camino = grafo.getCamino();
+        System.out.println("el camino es:");
+        camino.mostrar();
+        Nodo aux = camino.getFirst();
+        while(aux!=null){
+            celdas[aux.getElemento()].setBackground(Color.red);
+            aux = aux.getSiguiente();
+        }
+        
+    }//GEN-LAST:event_botonSolucionActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botonSolucion;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton volver;
     // End of variables declaration//GEN-END:variables
