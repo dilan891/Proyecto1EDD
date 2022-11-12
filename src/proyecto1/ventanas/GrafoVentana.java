@@ -217,7 +217,6 @@ public class GrafoVentana extends javax.swing.JFrame {
         
     }//GEN-LAST:event_botonSolucionActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonSolucion;
     private javax.swing.JPanel jPanel1;
