@@ -127,20 +127,47 @@ public class Lista{
             System.out.println("lista vacia");
         }
     }
-//    
-//    public String mostrarIndice(int position){
-//        Nodo aux = first;
-//        if (position >= size){
-//            System.out.println("La posicion no existe dentro de la lista");
-//            throw new Error("La posicion no existe dentro de la lista");
-//        }
-//        for (int i = 0; i <= position; i++) {
-//            if (i == position){
-//                return aux.getElemento().toString();
-//            }
-//            aux = aux.getSiguiente();
-//        }
-//        return "";
-//    }
-//
+    
+    public Integer[] toArray(){
+        Integer[] array = new Integer[size];
+        Nodo aux = first;
+        for (int i = 0; i < size; i++) {
+            array[i] = aux.getElemento();
+            aux = aux.getSiguiente();
+        }
+        return array;
+    }
+    
+    public boolean haveThis(int elemento){
+        Nodo aux = first;
+        while(aux != null){
+            if (aux.getElemento() == elemento) {
+                return true;
+            }
+            aux = aux.getSiguiente();
+        }
+        return false;
+    }
+    
+    public Object mostrarIndice(int position){
+        Nodo aux = first;
+        if (position >= size){
+            System.out.println("La posicion no existe dentro de la lista");
+            throw new Error("La posicion no existe dentro de la lista");
+        }
+        for (int i = 0; i <= position; i++) {
+            if (i == position){
+                return aux.getElemento();
+            }
+            aux = aux.getSiguiente();
+        }
+        return "";
+    }
+
+    public void vaciar(){
+        first = null;
+        last = null;
+        size = 0;
+    }
+    
 }

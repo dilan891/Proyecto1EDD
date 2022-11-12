@@ -111,7 +111,9 @@ public class Arbol {
                 caminoSalida.generarCopia(caminos);
             } else {
                 recorridoSalida(nodo.getNodoA());
+
                 recorridoSalida(nodo.getNodoB());
+
                 recorridoSalida(nodo.getNodoC());
             }
         }

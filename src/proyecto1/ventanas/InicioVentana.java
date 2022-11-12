@@ -42,6 +42,13 @@ public class InicioVentana extends javax.swing.JFrame {
         botonGenerar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        ErrorMensaje = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        verde1 = new javax.swing.JLabel();
+        rojo = new javax.swing.JLabel();
 
         label1.setText("label1");
 
@@ -59,15 +66,15 @@ public class InicioVentana extends javax.swing.JFrame {
         jPanel1.setToolTipText("");
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(nColumnas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 90, -1));
-        jPanel1.add(nFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 150, 90, -1));
+        jPanel1.add(nFilas, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 90, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel1.setText("Ancho que tendra el laboratorio: ");
+        jLabel1.setText("Ancho que tendra el laberinto: ");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 200, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel2.setText("Largo que tendra el laboratorio:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 190, -1));
+        jLabel2.setText("Largo que tendra el laberinto:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 190, -1));
 
         botonGenerar.setText("Generar");
         botonGenerar.addActionListener(new java.awt.event.ActionListener() {
@@ -75,25 +82,56 @@ public class InicioVentana extends javax.swing.JFrame {
                 botonGenerarActionPerformed(evt);
             }
         });
-        jPanel1.add(botonGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 210, -1, -1));
+        jPanel1.add(botonGenerar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 210, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel3.setText("Por favor introduce:");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 60, 140, 20));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Generar Laberinto");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 110, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 230, 20));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel5.setText(" Se generará un laberinto en base al ancho y el largo dado. ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 380, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel6.setText("  -El lado con bordes de color               es la entrada del laberinto.");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 350, 20));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
+        jLabel7.setText("  -El lado con bordes de color            es la salida del laberinto.");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 350, 10));
+
+        ErrorMensaje.setBackground(new java.awt.Color(255, 0, 51));
+        jPanel1.add(ErrorMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 290, 20));
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        jLabel9.setText("Instrucciones:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
+
+        verde1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        verde1.setForeground(new java.awt.Color(51, 215, 83));
+        verde1.setText("verde");
+        verde1.setToolTipText("");
+        jPanel1.add(verde1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 290, 20));
+
+        rojo.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
+        rojo.setForeground(new java.awt.Color(229, 25, 19));
+        rojo.setText("rojo");
+        rojo.setToolTipText("");
+        jPanel1.add(rojo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 300, 240, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -106,8 +144,12 @@ public class InicioVentana extends javax.swing.JFrame {
             int filas = Integer.parseInt(nFilas.getText());
             if (columnas <= 0 || filas <= 0) {
                 System.out.println("numero de columnas o filas invalida");
-                errorMensaje.setText("Numero de columnas o filas invalida");
-            }else{
+                ErrorMensaje.setText("Numero de columnas o filas invalida");
+            }else if (columnas <=5 || filas <= 5) {
+                System.out.println("numero de columnas o filas invalida");
+                ErrorMensaje.setText("Numero de columnas o filas no puede ser menor a 5");
+            }
+            else{
                 nColumnas.setText("");
                 nFilas.setText("");
                 int nNodos = filas * columnas; //numero de nodos que tendra el grafo a generar
@@ -134,6 +176,7 @@ public class InicioVentana extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel ErrorMensaje;
     private javax.swing.JButton botonGenerar;
     private javax.swing.JLabel errorMensaje;
     private javax.swing.JColorChooser jColorChooser1;
@@ -141,13 +184,19 @@ public class InicioVentana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private java.awt.Label label1;
     private java.awt.Label label2;
     private javax.swing.JTextField nColumnas;
     private javax.swing.JTextField nFilas;
+    private javax.swing.JLabel rojo;
     private java.awt.TextArea textArea1;
     private java.awt.TextField textField1;
+    private javax.swing.JLabel verde1;
     // End of variables declaration//GEN-END:variables
 }
