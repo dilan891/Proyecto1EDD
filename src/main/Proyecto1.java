@@ -23,23 +23,7 @@ public class Proyecto1 {
 //  
         InicioVentana v = new InicioVentana();//interfez de pedida de datos
         v.setVisible(true);
-
-
-
-//        Arbol arbol = new Arbol();
-//        arbol.appendArbol(0, 1);//A
-//        arbol.appendArbol(0, 2);//B   
-//        arbol.appendArbol(0, 36);//C   
-//        arbol.appendArbol(1, 5);//AA
-//        arbol.appendArbol(1, 9);//AB
-//        arbol.appendArbol(2, 10);//BA
-//
-//        System.out.println(arbol.DatoA());
-//        System.out.println(arbol.DatoB());
-//        System.out.println(arbol.DatoC());
-//        System.out.println(arbol.DatoAA());
-//        System.out.println(arbol.DatoAB());
-//        System.out.println(arbol.DatoBA());
+        
     }
 
 }
