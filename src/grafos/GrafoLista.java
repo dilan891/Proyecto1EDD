@@ -2,6 +2,8 @@ package grafos;
 
 import grafos.nodos.ENode;
 import grafos.nodos.VNode;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import lista.Lista;
 
 /**
@@ -49,11 +51,17 @@ public final class GrafoLista {
         int countLimites = 0;
         float numero = 0;
         for (int i = 0 ; i < vertices.length; i++) {
+            try {
+                Thread.sleep(1);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(GrafoLista.class.getName()).log(Level.SEVERE, null, ex);
+            }
             numero = (float)(Math.random()*18+0);
             System.out.println(numero);
             if (i == 0) {
                 unir(0, 1,numero);
                 unir(1, 0,numero);
+                numero = (float)(Math.random()*18+0);
                 unir(0, i+ancho,numero);
                 unir(i+ancho, 0,numero);
                 limites[countLimites] = 0;
@@ -61,8 +69,9 @@ public final class GrafoLista {
             }else if(ancho*(fila-1) == i){
                 unir(i, i+1,numero);
                 if (fila != alto) {
+                    numero = (float)(Math.random()*18+0);
                     int nodoAbajo = ancho*fila;//nodo debajo del nodo i
-                    unir(i, nodoAbajo,numero);
+                    unir(i, nodoAbajo,numero);  
                     unir(nodoAbajo,i,numero);
                 }
                 limites[countLimites] = i;
@@ -72,6 +81,7 @@ public final class GrafoLista {
                 unir(i, i-1,numero);
                 //unir((ancho*fila)-2, (ancho*fila)-1);
                 if (fila != alto) {
+                  numero = (float)(Math.random()*18+0);
                   int nodoAbajo = (ancho*(fila+1))-1;//pocicion del nodo ubicado abajo del nodo i
                   unir(i,nodoAbajo,numero);
                   unir(nodoAbajo,i,numero);  
@@ -81,12 +91,14 @@ public final class GrafoLista {
                 fila++;
             }else{ //el else une todos los nodos que no esten en ezquinas o extremos
                 unir(i,i-1,numero);
+                numero = (float)(Math.random()*18+0);
                 unir(i, i+1,numero);
                 if (fila == 1) {
                     limites[countLimites] = i;
                     countLimites++;
                 }
                 if (fila != alto) {
+                    numero = (float)(Math.random()*18+0);
                     int nodoAbajo = i+ancho;//pocicion del nodo ubicado abajo del nodo i
                     unir(i, nodoAbajo,numero);
                     unir(nodoAbajo, i,numero);
