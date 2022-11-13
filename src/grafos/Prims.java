@@ -79,7 +79,7 @@ public class Prims {
             count++;
         }
         NodoArbol3 raiz = this.arbol.getRaiz();
-        while(ultimo == -1||ultimo == posicionEntrada|| !arbol.isFinal(ultimo)){    
+        while(ultimo == -1||ultimo == posicionEntrada){ //genera la salida
             ultimo = grafoS.getRadomLimit();
         }
         arbol.setUltimo(raiz, ultimo);

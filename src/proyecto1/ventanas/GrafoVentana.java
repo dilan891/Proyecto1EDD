@@ -3,13 +3,14 @@ package proyecto1.ventanas;
 import grafos.GrafoLista;
 import java.awt.Color;
 import java.awt.Dimension;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import lista.Lista;
 import lista.Nodo;
 
 /**
  *
- * @author dilan
+ * @author dilan/yoita5
  */
 public class GrafoVentana extends javax.swing.JFrame {
 
@@ -106,7 +107,7 @@ public class GrafoVentana extends javax.swing.JFrame {
             }
         });
 
-        botonSolucion.setText("Solucion");
+        botonSolucion.setText("Mostrar Solucion");
         botonSolucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSolucionActionPerformed(evt);
@@ -117,35 +118,37 @@ public class GrafoVentana extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(222, 222, 222)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(volver)
-                .addGap(112, 112, 112)
-                .addComponent(botonSolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(183, 183, 183)
+                .addComponent(botonSolucion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(273, 273, 273))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(volver)
-                    .addComponent(botonSolucion))
-                .addGap(33, 33, 33))
+                    .addComponent(botonSolucion)
+                    .addComponent(volver))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 871, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 466, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -159,16 +162,58 @@ public class GrafoVentana extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_volverActionPerformed
 
+    /**
+     * Elimina de la lista int los elementos repetidos
+    **/
+//    private Lista reducirCamino(Lista lista){
+//        Integer[] listaArray = lista.toArray();
+//        Lista auxRecorrido = new Lista();
+//        Lista auxRepetidos = new Lista();
+//        int repitiendo = -1;
+//        for (int i = 0; i < lista.length(); i++) {
+//            if (auxRecorrido.haveThis(listaArray[i])) {
+//                auxRepetidos.append(listaArray[i]);
+//            }
+//            auxRecorrido.append(listaArray[i]);
+//        }
+//        System.out.println("lista recorrido: " );
+//        auxRecorrido.mostrar();
+//        System.out.println("Repetidos: ");
+//        auxRepetidos.mostrar();
+//        
+//        auxRecorrido.vaciar();
+//        
+//        for (int i = 0; i < lista.length(); i++) {
+//            if (auxRepetidos.haveThis(listaArray[i])) {
+//                if (repitiendo == i) {
+//                    repitiendo = -1;
+//                }
+//                else{
+//                    repitiendo = listaArray[i];
+//                }  
+//            }else if(repitiendo != -1){
+//                System.out.println("nada");
+//            }
+//            else{
+//                auxRecorrido.append(listaArray[i]);
+//            }
+//        }
+//        
+//        return auxRecorrido;
+//    }
+    
     private void botonSolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSolucionActionPerformed
         // TODO add your handling code here:
-        Lista camino = grafo.getCamino();
-        System.out.println("el camino es:");
-        camino.mostrar();
-        Nodo aux = camino.getFirst();
-        while(aux!=null){
-            celdas[aux.getElemento()].setBackground(Color.red);
-            aux = aux.getSiguiente();
-        }
+        JOptionPane.showMessageDialog(null,"No disponible por el momento");
+//        Lista camino = grafo.getCamino();
+//        System.out.println("el camino es:");
+//        camino.mostrar();
+//        Nodo aux = camino.getFirst();
+//        while(aux!=null){
+//            celdas[aux.getElemento()].setBackground(Color.MAGENTA);
+//            aux = aux.getSiguiente();
+//            pack();  
+//        }
         
     }//GEN-LAST:event_botonSolucionActionPerformed
 

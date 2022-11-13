@@ -15,7 +15,6 @@ public final class GrafoLista {
     private int first; //primer nodo del grafo, en caso de que se quiera
     private int last;
     private Lista camino; //un camino de reccorido en el grafo
-    private Prims arbolPrims;
     
     /**
      * @param nNodos numero de nodos que tendra el grafo
@@ -138,13 +137,13 @@ public final class GrafoLista {
     
     public void mostrarLog(){
         for (int i = 0; i < vertices.length; i++) {
-            System.out.println("\nposicion:  " + i);
+            //System.out.println("\nposicion:  " + i);
             if (vertices[i].getNext() != null) {
                 //System.out.println("Contiene al nodo de la posicion: " + vertices[i].getNext().getPosition());
-                System.out.println("contiene los nodos: ");
+                //System.out.println("contiene los nodos: ");
                 ENode aux = vertices[i].getNext();
                 while (aux!= null){
-                    System.out.println("--nodo " + aux.getPosition());
+                    //System.out.println("--nodo " + aux.getPosition());
                     aux = aux.getNext();
                 }
             }else{
@@ -184,7 +183,6 @@ public final class GrafoLista {
     public GrafoLista prims(){
         Prims arbol = new Prims(this);
         arbol.convertPrimd();
-        arbolPrims = arbol;
         GrafoLista arbolGrado = arbol.getArbolGrafo();
         arbolGrado.setFirst(arbol.getPosicionEntrada());
         arbolGrado.setLast(arbol.getUltimo());
