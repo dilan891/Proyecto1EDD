@@ -9,19 +9,19 @@ import lista.Lista;
  * @author dilan
  */
 public class Prims {
-
+    
     private GrafoLista grafoS; // grafo sin convertir a arbol
     private GrafoLista grafo;
     private int posicionEntrada;
     private int ultimo;//salida del laberinto
     private Arbol arbol;
-
+    
     public Prims(GrafoLista grafo) {
         this.grafoS = grafo;
         this.grafo = null;
         this.ultimo = -1;
     }
-
+    
     public void convertPrimd() {
         this.arbol = new Arbol();
         int select = 0;
@@ -32,7 +32,7 @@ public class Prims {
         }
         VNode first = grafoS.getVertices()[select];
         first.setAsignado(true);
-        posicionEntrada = select;       
+        posicionEntrada = select;
         //agarra la arista de menor peso
         VNode auxRecorrido = first;
         int count = 1;
@@ -40,7 +40,7 @@ public class Prims {
         Lista recorrdido = new Lista();
         while (true) { //cambiar
             float auxMenor = 9999;
-            int positionMenor = 0;       
+            int positionMenor = 0;            
             boolean haySiguiente = false;//indica si todavia hay nodos siguientes no asigandos
             ENode aux = auxRecorrido.getNext();
             if (recorrdido.isEmpty()) {
@@ -56,12 +56,12 @@ public class Prims {
             }
             if (haySiguiente == false && auxRecorrido.equals(first)) {
                 //System.out.println("no mas datos");
-                try{
+                try {
                     first = grafoS.getVertices()[recorrdido.getFirst().getSiguiente().getElemento()]; //first sera igual al segundo elemento del recorrido
-                }catch(NullPointerException e){
+                } catch (NullPointerException e) {
                     System.out.println("Termino...");
                     break;
-                }             
+                }
                 //auxRecorrido = first;
                 recorrdido.removed(0);
             } else if (haySiguiente == false) {
@@ -79,35 +79,65 @@ public class Prims {
             count++;
         }
         NodoArbol3 raiz = this.arbol.getRaiz();
-        while(ultimo == -1||ultimo == posicionEntrada){ //genera la salida
-            ultimo = grafoS.getRadomLimit();
-        }
-        arbol.setUltimo(raiz, ultimo);
-        //grafo.mostrarLog();
-        //System.out.println(arbol.DatoA());
+        obtenerUltimo();
         this.arbol.recorridoSalida(raiz); //genera la lista de recorrido hasta la salida del laberinto
         //this.arbol.getCaminoSalida().mostrar();
         //arbol.mostrar(raiz);
+        // System.out.println(ultimo);
+        arbol.setUltimo(raiz, ultimo);
+        //grafo.mostrarLog();
+        //System.out.println(arbol.DatoA());
     }
-
+    
+    /**
+     * identifica cual va ha ser el ultimo nodo del arbol
+    **/
+    private void obtenerUltimo(){
+        int aux = 0;
+        int ultimoAux = 0;
+        for (int i = 0; i < 5; i++) { //bucle para que la salida no se genere tan cerca del inicio
+            ultimo = grafoS.getRadomLimit();
+            while (ultimo == -1 || ultimo == posicionEntrada) { //genera la salida
+                ultimo = grafoS.getRadomLimit();
+            }
+            if(ultimo - posicionEntrada < 0){
+                if ((ultimo - posicionEntrada)*-1 > aux ) {
+                    aux = (ultimo - posicionEntrada)*-1;
+                    ultimoAux = ultimo;
+                }
+            }else{
+                if (ultimo - posicionEntrada > aux) {
+                    aux = ultimo - posicionEntrada;
+                    ultimoAux = ultimo;
+                }
+            }
+//            System.out.println("\nultimo: " + ultimo);
+//            System.out.println("ultimoAux: " + ultimoAux);
+//            System.out.println("aux: " + aux);
+//            System.out.println("resta es: " + (ultimo - posicionEntrada));
+        }
+        ultimo = ultimoAux;
+       
+    }
+    
     public int getPosicionEntrada() {
         return posicionEntrada;
     }
-
+    
     public GrafoLista getArbolGrafo() {
         return grafo;
     }
-
+    
     public int getUltimo() {
         return ultimo;
     }
     
-    public Arbol getArbol(){
+    public Arbol getArbol() {
         return arbol;
     }
-
-    public Lista getCamino(){
+    
+    public Lista getCamino() {
         return arbol.getCaminoSalida();
-    } 
+    }    
     
 }

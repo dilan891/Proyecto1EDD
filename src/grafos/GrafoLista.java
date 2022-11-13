@@ -11,7 +11,7 @@ import lista.Lista;
 public final class GrafoLista {
     private VNode[] vertices;
     private int nNodos; //numero de nodos que tendra el grafo
-    private Integer[] limites = new Integer[150];
+    private Integer[] limites = new Integer[500];
     private int first; //primer nodo del grafo, en caso de que se quiera
     private int last;
     private Lista camino; //un camino de reccorido en el grafo
@@ -134,7 +134,7 @@ public final class GrafoLista {
         System.out.println(select);
         return select;
     }
-    
+     
     public void mostrarLog(){
         for (int i = 0; i < vertices.length; i++) {
             //System.out.println("\nposicion:  " + i);
