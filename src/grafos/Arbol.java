@@ -56,7 +56,7 @@ public class Arbol {
 
         }
     }
-
+    
     public void recorrerArbolAgregando(NodoArbol3 nodo, int valorBuscado, int dato) {
         if (nodo != null) {
             //System.out.println("Estas en el nodo: " + nodo.getDato() + " y buscas: " + valorBuscado);
@@ -111,7 +111,9 @@ public class Arbol {
                 caminoSalida.generarCopia(caminos);
             } else {
                 recorridoSalida(nodo.getNodoA());
+
                 recorridoSalida(nodo.getNodoB());
+
                 recorridoSalida(nodo.getNodoC());
             }
         }

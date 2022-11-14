@@ -11,11 +11,10 @@ import lista.Lista;
 public final class GrafoLista {
     private VNode[] vertices;
     private int nNodos; //numero de nodos que tendra el grafo
-    private Integer[] limites = new Integer[150];
+    private Integer[] limites = new Integer[500];
     private int first; //primer nodo del grafo, en caso de que se quiera
     private int last;
     private Lista camino; //un camino de reccorido en el grafo
-    private Prims arbolPrims;
     
     /**
      * @param nNodos numero de nodos que tendra el grafo
@@ -51,10 +50,10 @@ public final class GrafoLista {
         float numero = 0;
         for (int i = 0 ; i < vertices.length; i++) {
             numero = (float)(Math.random()*18+0);
-            System.out.println(numero);
             if (i == 0) {
                 unir(0, 1,numero);
                 unir(1, 0,numero);
+                numero = (float)(Math.random()*18+0);
                 unir(0, i+ancho,numero);
                 unir(i+ancho, 0,numero);
                 limites[countLimites] = 0;
@@ -62,17 +61,18 @@ public final class GrafoLista {
             }else if(ancho*(fila-1) == i){
                 unir(i, i+1,numero);
                 if (fila != alto) {
+                    numero = (float)(Math.random()*18+0);
                     int nodoAbajo = ancho*fila;//nodo debajo del nodo i
-                    unir(i, nodoAbajo,numero);
+                    unir(i, nodoAbajo,numero);  
                     unir(nodoAbajo,i,numero);
                 }
                 limites[countLimites] = i;
                 countLimites++;
             }else if (i == ((ancho*fila)-1)) {           
-                //System.out.println((ancho*fila)-1);
                 unir(i, i-1,numero);
                 //unir((ancho*fila)-2, (ancho*fila)-1);
                 if (fila != alto) {
+                  numero = (float)(Math.random()*18+0);
                   int nodoAbajo = (ancho*(fila+1))-1;//pocicion del nodo ubicado abajo del nodo i
                   unir(i,nodoAbajo,numero);
                   unir(nodoAbajo,i,numero);  
@@ -82,12 +82,14 @@ public final class GrafoLista {
                 fila++;
             }else{ //el else une todos los nodos que no esten en ezquinas o extremos
                 unir(i,i-1,numero);
+                numero = (float)(Math.random()*18+0);
                 unir(i, i+1,numero);
                 if (fila == 1) {
                     limites[countLimites] = i;
                     countLimites++;
                 }
                 if (fila != alto) {
+                    numero = (float)(Math.random()*18+0);
                     int nodoAbajo = i+ancho;//pocicion del nodo ubicado abajo del nodo i
                     unir(i, nodoAbajo,numero);
                     unir(nodoAbajo, i,numero);
@@ -135,16 +137,16 @@ public final class GrafoLista {
         System.out.println(select);
         return select;
     }
-    
+     
     public void mostrarLog(){
         for (int i = 0; i < vertices.length; i++) {
-            System.out.println("\nposicion:  " + i);
+            //System.out.println("\nposicion:  " + i);
             if (vertices[i].getNext() != null) {
                 //System.out.println("Contiene al nodo de la posicion: " + vertices[i].getNext().getPosition());
-                System.out.println("contiene los nodos: ");
+                //System.out.println("contiene los nodos: ");
                 ENode aux = vertices[i].getNext();
                 while (aux!= null){
-                    System.out.println("--nodo " + aux.getPosition());
+                    //System.out.println("--nodo " + aux.getPosition());
                     aux = aux.getNext();
                 }
             }else{
@@ -184,7 +186,6 @@ public final class GrafoLista {
     public GrafoLista prims(){
         Prims arbol = new Prims(this);
         arbol.convertPrimd();
-        arbolPrims = arbol;
         GrafoLista arbolGrado = arbol.getArbolGrafo();
         arbolGrado.setFirst(arbol.getPosicionEntrada());
         arbolGrado.setLast(arbol.getUltimo());
