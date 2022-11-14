@@ -90,7 +90,7 @@ public class InicioVentana extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Generar Laberinto");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 230, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 10, 230, 20));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel5.setText(" Se generará un laberinto en base al ancho y el largo dado. ");
@@ -105,7 +105,7 @@ public class InicioVentana extends javax.swing.JFrame {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 350, 10));
 
         ErrorMensaje.setBackground(new java.awt.Color(255, 0, 51));
-        jPanel1.add(ErrorMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 290, 20));
+        jPanel1.add(ErrorMensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 390, 20));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel9.setText("Instrucciones:");
@@ -145,9 +145,12 @@ public class InicioVentana extends javax.swing.JFrame {
             if (columnas <= 0 || filas <= 0) {
                 System.out.println("numero de columnas o filas invalida");
                 ErrorMensaje.setText("Numero de columnas o filas invalida");
-            }else if (columnas <=5 || filas <= 5) {
+            }else if (columnas <= 5 || filas <= 5) {
                 System.out.println("numero de columnas o filas invalida");
                 ErrorMensaje.setText("Numero de columnas o filas no puede ser menor a 5");
+            }else if (columnas > 100 || filas > 100) {
+                System.out.println("numero de columnas o filas invalida");
+                ErrorMensaje.setText("Numero de columnas o filas no puede ser mayor que 100");
             }
             else{
                 nColumnas.setText("");

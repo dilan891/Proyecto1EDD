@@ -1,12 +1,10 @@
 package proyecto1.ventanas;
 
 import grafos.GrafoLista;
-import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import lista.Lista;
-import lista.Nodo;
+
 
 /**
  *
@@ -16,7 +14,7 @@ public class GrafoVentana extends javax.swing.JFrame {
 
     private InicioVentana ventanaAnterior;
     private GrafoLista grafo;
-    private JPanel[] celdas;
+    private JPanel[] celdas; //se utiliza para luego dibujar la solucion
 
     /**
      * Creates new form Grafo

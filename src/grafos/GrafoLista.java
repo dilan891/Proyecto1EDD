@@ -2,8 +2,6 @@ package grafos;
 
 import grafos.nodos.ENode;
 import grafos.nodos.VNode;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import lista.Lista;
 
 /**
@@ -51,13 +49,7 @@ public final class GrafoLista {
         int countLimites = 0;
         float numero = 0;
         for (int i = 0 ; i < vertices.length; i++) {
-            try {
-                Thread.sleep(1);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GrafoLista.class.getName()).log(Level.SEVERE, null, ex);
-            }
             numero = (float)(Math.random()*18+0);
-            System.out.println(numero);
             if (i == 0) {
                 unir(0, 1,numero);
                 unir(1, 0,numero);
@@ -77,7 +69,6 @@ public final class GrafoLista {
                 limites[countLimites] = i;
                 countLimites++;
             }else if (i == ((ancho*fila)-1)) {           
-                //System.out.println((ancho*fila)-1);
                 unir(i, i-1,numero);
                 //unir((ancho*fila)-2, (ancho*fila)-1);
                 if (fila != alto) {

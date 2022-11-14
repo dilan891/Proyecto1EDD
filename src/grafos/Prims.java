@@ -80,7 +80,7 @@ public class Prims {
         }
         NodoArbol3 raiz = this.arbol.getRaiz();
         obtenerUltimo();
-        this.arbol.recorridoSalida(raiz); //genera la lista de recorrido hasta la salida del laberinto
+        //this.arbol.recorridoSalida(raiz); //genera la lista de recorrido hasta la salida del laberinto
         //this.arbol.getCaminoSalida().mostrar();
         //arbol.mostrar(raiz);
         // System.out.println(ultimo);
